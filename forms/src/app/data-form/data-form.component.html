@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-10">
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" formControlName="nome"  
+                placeholder="Nome">
+            </div>
+            <div class="row mt-n3" *ngIf="!formulario.get('nome').valid && formulario.get('nome').touched">
+              <div class="col-12">
+                <alert  type="danger">
+                  <strong>O nome</strong> é obrigatório.
+                </alert>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="nome">Email</label>
+                <input type="email" class="form-control" id="Email" formControlName="email"  
+                placeholder="Email">
+            </div>
+            <div class="row mt-n3" *ngIf="!formulario.get('email').valid && formulario.get('email').touched">
+              <div class="col-12">
+                <alert  type="danger">
+                  <strong>O email</strong> é obrigatório.
+                </alert>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                  <div class="col-4">
+                      <label for="cep">CEP</label>
+                      <input type="" class="form-control" id="cep" formControlName="cep">
+                    </div>
+                    <div class="col-4">
+                      <label for="numero">Número</label>
+                      <input type="number" class="form-control" id="numero" formControlName="numero">
+                    </div>
+                    <div class="col-4">
+                      <label for="complemento">Complemento</label>
+                      <input type="text" class="form-control" id="complemento" formControlName="complemento">
+                    </div>
+              </div>
+            </div>
+              
+              <div class="row ">
+                <div class="col-4">
+                    <alert *ngIf="!formulario.get('cep').valid && formulario.get('cep').touched" type="danger">
+                        <strong>O CEP </strong> é obrigatório.  
+                    </alert>
+                </div>
+                <div class="col-4">
+                    <alert *ngIf="!formulario.get('numero').valid && formulario.get('numero').touched" type="danger">
+                        <strong>O número </strong> é obrigatório.  
+                    </alert>
+                </div>
+                <div class="col-4">
+                    <alert *ngIf="!formulario.get('complemento').valid && formulario.get('complemento').touched" type="danger">
+                        <strong>O complemento </strong> é obrigatório.  
+                    </alert>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="rua">Rua</label>
+                <input type="text" class="form-control" readonly id="rua" formControlName="rua">
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-4">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" class="form-control" readonly id="bairro" formControlName="bairro">
+                      </div>
+                      <div class="col-4">
+                        <label for="numero">Cidade</label>
+                        <input type="string" class="form-control" readonly id="cidade" formControlName="cidade">
+                      </div>
+                      <div class="col-4">
+                        <label for="complemento">Estado</label>
+                        <input type="string" class="form-control" readonly id="estado" formControlName="estado">
+                      </div>
+                </div>
+            </div>
+            
+            <button  type="submit" class="btn btn-primary">Submit</button>
+            <button  class="btn btn-secondary ml-1" (click)="resetar() ">Cancelar</button>
+            <app-form-debug [form]="formulario"></app-form-debug>
+          </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-10">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="form-group"
+        [class.has-error]="!nome.valid && nome.touched">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="Nome" name="nome"  
+          placeholder="Nome" [(ngModel)]="usuario.nome" required #nome="ngModel">
+        </div>
+        <alert *ngIf="!nome.valid && nome.touched" type="danger">
+          <strong>O nome</strong>  é obrigatório.
+        </alert>
+        <!-- <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger">
+          Nome é obrigatório.
+        </div> -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" 
+          placeholder="nome@email.com" [(ngModel)]="usuario.email" required email #email="ngModel">
+        </div>
+        <alert *ngIf="!email.valid && email.touched" type="danger">
+          <strong>O email </strong> é obrigatório e digite o email corretamente.
+        </alert>
+        <div ngModelGroup="endereco">
+        <div class="form-group">
+          <div class="row">
+              <div class="col-4">
+                  <label for="cep">CEP</label>
+                  <input type="" class="form-control" id="cep" name="cep"
+                  placeholder="12345678" [(ngModel)]="usuario.cep" required  #cep="ngModel"
+                  (blur)="consultaCep($event.target.value, f)">
+                </div>
+                <div class="col-4">
+                  <label for="numero">Número</label>
+                  <input type="number" class="form-control" id="numero" name="numero"
+                   [(ngModel)]="usuario.numero" required  #numero="ngModel">
+                </div>
+                <div class="col-4">
+                  <label for="complemento">Complemento</label>
+                  <input type="text" class="form-control" id="complemento" name="complemento"
+                  placeholder="Casa/Apartamento" [(ngModel)]="usuario.complemento" required  #complemento="ngModel">
+                </div>
+          </div>
+        </div>
+          
+          <div class="row mb-n5">
+            <div class="col-4">
+                <alert *ngIf="!cep.valid && cep.touched" type="danger">
+                    <strong>O CEP </strong> é obrigatório.  
+                </alert>
+            </div>
+            <div class="col-4">
+                <alert *ngIf="!numero.valid && numero.touched" type="danger">
+                    <strong>O número </strong> é obrigatório.  
+                </alert>
+            </div>
+            <div class="col-4">
+                <alert *ngIf="!complemento.valid && complemento.touched" type="danger">
+                    <strong>O complemento </strong> é obrigatório.  
+                </alert>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="rua">Rua</label>
+            <input type="text" class="form-control" readonly id="rua" name="rua"
+            placeholder="" [(ngModel)]="usuario.rua" required  #rua="ngModel">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-4">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" class="form-control" readonly id="bairro" name="bairro"
+                    placeholder="" [(ngModel)]="usuario.bairro" required  #bairro="ngModel">
+                  </div>
+                  <div class="col-4">
+                    <label for="numero">Cidade</label>
+                    <input type="string" class="form-control" readonly id="cidade" name="cidade"
+                    placeholder="" [(ngModel)]="usuario.cidade" required  #cidade="ngModel">
+                  </div>
+                  <div class="col-4">
+                    <label for="complemento">Estado</label>
+                    <input type="string" class="form-control" readonly id="estado" name="estado"
+                    placeholder="" [(ngModel)]="usuario.estado" required  #estado="ngModel">
+                  </div>
+            </div>
+        </div>
+        </div>
+        <button  type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+      <app-form-debug [form]="f"></app-form-debug>
+      </form>
+    </div>
+  </div>
+</div>
