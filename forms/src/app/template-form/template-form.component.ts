@@ -50,14 +50,6 @@ export class TemplateFormComponent implements OnInit {
   }
 
   populaDadosForm(dados, form){
-    // form.setValue({
-    //   nome: form.value.nome,
-    //   email: form.value.email,
-    //   endereco: {
-    //     cep: dados.cep,
-    //     numero: '',
-    //   }
-    // });
 
     form.form.patchValue({
       endereco: {

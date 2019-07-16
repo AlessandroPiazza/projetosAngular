@@ -26,11 +26,13 @@
                 </alert>
               </div>
             </div>
+            <div formGroupName="endereco">
             <div class="form-group">
               <div class="row">
                   <div class="col-4">
                       <label for="cep">CEP</label>
-                      <input type="" class="form-control" id="cep" formControlName="cep">
+                      <input type="" class="form-control" id="cep" formControlName="cep" 
+                      (blur)="consultaCep()">
                     </div>
                     <div class="col-4">
                       <label for="numero">Número</label>
@@ -45,17 +47,17 @@
               
               <div class="row ">
                 <div class="col-4">
-                    <alert *ngIf="!formulario.get('cep').valid && formulario.get('cep').touched" type="danger">
+                    <alert *ngIf="!formulario.get('endereco.cep').valid && formulario.get('endereco.cep').touched" type="danger">
                         <strong>O CEP </strong> é obrigatório.  
                     </alert>
                 </div>
                 <div class="col-4">
-                    <alert *ngIf="!formulario.get('numero').valid && formulario.get('numero').touched" type="danger">
+                    <alert *ngIf="!formulario.get('endereco.numero').valid && formulario.get('endereco.numero').touched" type="danger">
                         <strong>O número </strong> é obrigatório.  
                     </alert>
                 </div>
                 <div class="col-4">
-                    <alert *ngIf="!formulario.get('complemento').valid && formulario.get('complemento').touched" type="danger">
+                    <alert *ngIf="!formulario.get('endereco.complemento').valid && formulario.get('endereco.complemento').touched" type="danger">
                         <strong>O complemento </strong> é obrigatório.  
                     </alert>
                 </div>
@@ -81,7 +83,7 @@
                       </div>
                 </div>
             </div>
-            
+          </div>
             <button  type="submit" class="btn btn-primary">Submit</button>
             <button  class="btn btn-secondary ml-1" (click)="resetar() ">Cancelar</button>
             <app-form-debug [form]="formulario"></app-form-debug>
